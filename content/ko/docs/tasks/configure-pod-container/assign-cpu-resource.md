@@ -21,27 +21,27 @@ CPU를 할당 받을 수 있다.
 작업 예제를 실행하려면 클러스터에 적어도 하나의 CPU를 사용할 수 있어야 한다.
 
 
-A few of the steps on this page require you to run the
-[metrics-server](https://github.com/kubernetes-sigs/metrics-server)
-service in your cluster. If you have the metrics-server
-running, you can skip those steps.
+이 페이지의 몇 가지 단계를 실행하려면 클러스터에서
+[메트릭-서버](https://github.com/kubernetes-sigs/metrics-server)
+서비스를 실행해야 한다. 메트릭 서버가 실행 중인 경우
+해당 단계를 건너뛸 수 있다.
 
-If you are running {{< glossary_tooltip term_id="minikube" >}}, run the
-following command to enable metrics-server:
+{{< glossary_tooltip term_id="minikube" >}} 를 실행하는 경우
+다음 명령을 실행하여 메트릭-서버를 활성화한다.
 
 ```shell
 minikube addons enable metrics-server
 ```
 
-To see whether metrics-server (or another provider of the resource metrics
-API, `metrics.k8s.io`) is running, type the following command:
+메트릭-서버(또는 리소스 메트릭 API의 다른 공급자 `metrics.k8s.io`) 가
+실행 중인지 확인하러면 다음의 명령을 입력한다.
 
 ```shell
 kubectl get apiservices
 ```
 
-If the resource metrics API is available, the output will include a
-reference to `metrics.k8s.io`.
+리소스 메트릭 API를 사용할 수 있는 경우, 출력에
+`metrics.k8s.io`에 대한 참조가 포함된다.
 
 
 ```
