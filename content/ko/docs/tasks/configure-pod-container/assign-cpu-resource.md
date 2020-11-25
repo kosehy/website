@@ -54,16 +54,16 @@ v1beta1.metrics.k8s.io
 
 <!-- steps -->
 
-## Create a namespace
+## 네임스페이스 생성
 
-Create a {{< glossary_tooltip term_id="namespace" >}} so that the resources you
-create in this exercise are isolated from the rest of your cluster.
+이 실습에서 생성한 리소스가 나머지 클러스터와 분리되도록
+{{< glossary_tooltip term_id="namespace" >}} 를 생성한다.
 
 ```shell
 kubectl create namespace cpu-example
 ```
 
-## Specify a CPU request and a CPU limit
+## CPU 요청 및 CPU 제한 지정
 
 To specify a CPU request for a container, include the `resources:requests` field
 in the Container resource manifest. To specify a CPU limit, include `resources:limits`.
