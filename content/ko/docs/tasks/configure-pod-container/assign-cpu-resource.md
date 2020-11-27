@@ -65,30 +65,30 @@ kubectl create namespace cpu-example
 
 ## CPU 요청 및 CPU 제한 지정
 
-To specify a CPU request for a container, include the `resources:requests` field
-in the Container resource manifest. To specify a CPU limit, include `resources:limits`.
+컨테이너에 대한 CPU 요청을 지정하려면 컨테이너 리소스 메니페스트에 `resources:requests`
+필드를 포함해야 한다. CPU 제한을 지정하려면 `resources:limits` 를 포함해야 한다.
 
-In this exercise, you create a Pod that has one container. The container has a request
-of 0.5 CPU and a limit of 1 CPU. Here is the configuration file for the Pod:
+이 실습에서는 한개의 컨테이너가 있는 파드를 만든다. 컨테이너에는
+0.5 CPU의 요청과 1개의 CPU 제한이 있다. 다음은 파드의 구성 파일이다.
 
 {{< codenew file="pods/resource/cpu-request-limit.yaml" >}}
 
-The `args` section of the configuration file provides arguments for the container when it starts.
-The `-cpus "2"` argument tells the Container to attempt to use 2 CPUs.
+구설 파일의 `args` 섹션은 컨테이너가 시작될 때 인수를 제공한다.
+`-cpus "2"` 인수는 컨테이너가 2개의 CPU를 사용하도록 한다.
 
-Create the Pod:
+파드 생성하기.
 
 ```shell
 kubectl apply -f https://k8s.io/examples/pods/resource/cpu-request-limit.yaml --namespace=cpu-example
 ```
 
-Verify that the Pod is running:
+파드가 실행 중인지 확인하기.
 
 ```shell
 kubectl get pod cpu-demo --namespace=cpu-example
 ```
 
-View detailed information about the Pod:
+파드에 대한 자세한 정보 보기.
 
 ```shell
 kubectl get pod cpu-demo --output=yaml --namespace=cpu-example
