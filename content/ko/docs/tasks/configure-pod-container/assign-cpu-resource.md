@@ -94,8 +94,8 @@ kubectl get pod cpu-demo --namespace=cpu-example
 kubectl get pod cpu-demo --output=yaml --namespace=cpu-example
 ```
 
-The output shows that the one container in the Pod has a CPU request of 500 milliCPU
-and a CPU limit of 1 CPU.
+출력은 파드의 한 컨테이너에 500 milliCPU의 요청과 1개의 CPU 제한이
+있음을 보여준다.
 
 ```yaml
 resources:
@@ -105,7 +105,7 @@ resources:
     cpu: 500m
 ```
 
-Use `kubectl top` to fetch the metrics for the pod:
+`kubectl top` 을 사용하여 파드에 대란 메트릭을 가져온다.
 
 ```shell
 kubectl top pod cpu-demo --namespace=cpu-example
