@@ -56,7 +56,7 @@ v1beta1.metrics.k8s.io
 
 ## 네임스페이스 생성
 
-이 실습에서 생성한 리소스가 나머지 클러스터와 분리되도록
+이 예제에서 생성한 리소스가 나머지 클러스터와 분리되도록
 {{< glossary_tooltip term_id="namespace" >}} 를 생성한다.
 
 ```shell
@@ -68,12 +68,12 @@ kubectl create namespace cpu-example
 컨테이너에 대한 CPU 요청을 지정하려면 컨테이너 리소스 메니페스트에 `resources:requests`
 필드를 포함해야 한다. CPU 제한을 지정하려면 `resources:limits` 를 포함해야 한다.
 
-이 실습에서는 한개의 컨테이너가 있는 파드를 만든다. 컨테이너에는
+이 예제에서는 한개의 컨테이너가 있는 파드를 만든다. 컨테이너에는
 0.5 CPU의 요청과 1개의 CPU 제한이 있다. 다음은 파드의 구성 파일이다.
 
 {{< codenew file="pods/resource/cpu-request-limit.yaml" >}}
 
-구설 파일의 `args` 섹션은 컨테이너가 시작될 때 인수를 제공한다.
+구성 파일의 `args` 섹션은 컨테이너가 시작될 때 인수를 제공한다.
 `-cpus "2"` 인수는 컨테이너가 2개의 CPU를 사용하도록 한다.
 
 파드 생성하기.
@@ -105,21 +105,21 @@ resources:
     cpu: 500m
 ```
 
-`kubectl top` 을 사용하여 파드에 대란 메트릭을 가져온다.
+`kubectl top` 을 사용하여 파드에 대한 메트릭을 가져온다.
 
 ```shell
 kubectl top pod cpu-demo --namespace=cpu-example
 ```
 
-This example output shows that the Pod is using 974 milliCPU, which is
-just a bit less than the limit of 1 CPU specified in the Pod configuration.
+이 예제의 출력 결과는 파드가 974 milliCPU를 사용하고 있음을 보여준다.
+이는 파드 구성에 지정된 1 CPU 제한보다 약간 적은 것이다.
 
 ```
 NAME                        CPU(cores)   MEMORY(bytes)
 cpu-demo                    974m         <something>
 ```
 
-Recall that by setting `-cpu "2"`, you configured the Container to attempt to use 2 CPUs, but the Container is only being allowed to use about 1 CPU. The container's CPU use is being throttled, because the container is attempting to use more CPU resources than its limit.
+`-cpu "2"`를 설정하여 2개의 CPU를 사용하도록 컨테이너를 구성했지만, 컨테이너는 약 1개의 CPU만 사용하도록 허용된다는 점을 상기해야 한다. 컨테이너가 제한보다 더 많은 CPU 리소스를 사용하려고 했기 때문에 컨테이너의 CPU 사용이 제한되고 있다.
 
 {{< note >}}
 Another possible explanation for the CPU use being below 1.0 is that the Node might not have
