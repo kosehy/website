@@ -8,7 +8,7 @@ weight: 20
 이 페이지는 CPU *요청량* 과 CPU *상한* 을 컨테이너에 어떻게 할당하는
 방법을 보여준다. 컨테이너는 구성된 상한보다 더 많은 CPU를 사용할 수 없다.
 시스템에 사용 가능한 CPU 시간이 있는 경우, 컨테이너는 요청한 만큼의
-CPU를 할당 받을 수 있다.
+CPU를 할당받을 수 있다.
 
 
 
@@ -26,7 +26,7 @@ CPU를 할당 받을 수 있다.
 서비스를 실행해야 한다. 메트릭 서버가 실행 중인 경우
 해당 단계를 건너뛸 수 있다.
 
-{{< glossary_tooltip term_id="minikube" >}} 를 실행하는 경우
+{{< glossary_tooltip term_id="minikube" >}}를 실행하는 경우
 다음 명령을 실행하여 메트릭-서버를 활성화한다.
 
 ```shell
@@ -34,7 +34,7 @@ minikube addons enable metrics-server
 ```
 
 메트릭-서버(또는 리소스 메트릭 API의 다른 공급자 `metrics.k8s.io`) 가
-실행 중인지 확인하러면 다음의 명령을 입력한다.
+실행 중인지 확인하려면 다음의 명령을 입력한다.
 
 ```shell
 kubectl get apiservices
@@ -57,7 +57,7 @@ v1beta1.metrics.k8s.io
 ## 네임스페이스 생성
 
 이 예제에서 생성한 리소스가 나머지 클러스터와 분리되도록
-{{< glossary_tooltip term_id="namespace" >}} 를 생성한다.
+{{< glossary_tooltip term_id="namespace" >}}를 생성한다.
 
 ```shell
 kubectl create namespace cpu-example
@@ -68,7 +68,7 @@ kubectl create namespace cpu-example
 컨테이너에 대한 CPU 요청을 지정하려면 컨테이너 리소스 메니페스트에 `resources:requests`
 필드를 포함해야 한다. CPU 제한을 지정하려면 `resources:limits` 를 포함해야 한다.
 
-이 예제에서는 한개의 컨테이너가 있는 파드를 만든다. 컨테이너에는
+이 예제에서는 한 개의 컨테이너가 있는 파드를 만든다. 컨테이너에는
 0.5 CPU의 요청과 1개의 CPU 제한이 있다. 다음은 파드의 구성 파일이다.
 
 {{< codenew file="pods/resource/cpu-request-limit.yaml" >}}
@@ -122,8 +122,9 @@ cpu-demo                    974m         <something>
 `-cpu "2"`를 설정하여 2개의 CPU를 사용하도록 컨테이너를 구성했지만, 컨테이너는 약 1개의 CPU만 사용하도록 허용된다는 점을 상기해야 한다. 컨테이너가 제한보다 더 많은 CPU 리소스를 사용하려고 했기 때문에 컨테이너의 CPU 사용이 제한되고 있다.
 
 {{< note >}}
-Another possible explanation for the CPU use being below 1.0 is that the Node might not have
-enough CPU resources available. Recall that the prerequisites for this exercise require your cluster to have at least 1 CPU available for use. If your Container runs on a Node that has only 1 CPU, the Container cannot use more than 1 CPU regardless of the CPU limit specified for the Container.
+1.0 이하의 CPU 사용에 대한 또 다른 설명은 노드에 사용가능한 CPU 리소스가
+충분하지 않을 수 있다는 것이다. 이 실습의 전제 조건에서는 클러스테어 사용 가능한 CPU가 1개 이상 있어야 한다는 점을 기억해야한다..
+만약 컨테이너가 CPU가 1개만 있는 노드에서 실행되는 경우 컨테이너에 지정된 CPU 제한에 관계없이 둘 이상의 CPU를 사용할 수 없다..
 {{< /note >}}
 
 ## CPU units
