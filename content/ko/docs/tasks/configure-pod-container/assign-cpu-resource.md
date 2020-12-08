@@ -149,7 +149,7 @@ CPU는 항상 상대 수량이 아닌 절대 수량으로 요청된다. 0.1은 �
 kubectl delete pod cpu-demo --namespace=cpu-example
 ```
 
-## Specify a CPU request that is too big for your Nodes
+## 노드에 비해 너무 큰 CPU 요청 지정
 
 CPU requests and limits are associated with Containers, but it is useful to think
 of a Pod as having a CPU request and limit. The CPU request for a Pod is the sum
