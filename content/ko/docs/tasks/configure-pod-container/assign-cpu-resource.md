@@ -123,27 +123,27 @@ cpu-demo                    974m         <something>
 
 {{< note >}}
 1.0 이하의 CPU 사용에 대한 또 다른 설명은 노드에 사용가능한 CPU 리소스가
-충분하지 않을 수 있다는 것이다. 이 실습의 전제 조건에서는 클러스테어 사용 가능한 CPU가 1개 이상 있어야 한다는 점을 기억해야한다..
-만약 컨테이너가 CPU가 1개만 있는 노드에서 실행되는 경우 컨테이너에 지정된 CPU 제한에 관계없이 둘 이상의 CPU를 사용할 수 없다..
+충분하지 않을 수 있다는 것이다. 이 실습의 전제 조건에서는 클러스테어 사용 가능한 CPU가 1개 이상 있어야 한다는 점을 기억해야한다.
+만약 컨테이너가 CPU가 1개만 있는 노드에서 실행되는 경우 컨테이너에 지정된 CPU 제한에 관계없이 둘 이상의 CPU를 사용할 수 없다.
 {{< /note >}}
 
-## CPU units
+## CPU 유닛
 
-The CPU resource is measured in *CPU* units. One CPU, in Kubernetes, is equivalent to:
+CPU 리소스는 *CPU* 유닛으로 측정된다. 쿠버네티스에서 하나의 CPU는 다음과 같다.
 
 * 1 AWS vCPU
-* 1 GCP Core
+* 1 GCP 코어
 * 1 Azure vCore
-* 1 Hyperthread on a bare-metal Intel processor with Hyperthreading
+* 1 하이퍼스레딩을 사용하는 베어 메탈 Intel 프로세서의 하이퍼스레드
 
-Fractional values are allowed. A Container that requests 0.5 CPU is guaranteed half as much
-CPU as a Container that requests 1 CPU. You can use the suffix m to mean milli. For example
-100m CPU, 100 milliCPU, and 0.1 CPU are all the same. Precision finer than 1m is not allowed.
+분수 값은 허용된다. 0.5 CPU를 요청하는 컨테이너는 1개의 CPU를 요청하는
+컨테이너보다 절반의 CPU를 보장받는다. 접미사 m을 milli를 의미하는데 사용할 수 있다. 예를 들어
+100m CPU, 100 milliCPU, 0.1 CPU는 모두 동일하다. 1m 이상의 정밀도는 허용되지 않는다.
 
-CPU is always requested as an absolute quantity, never as a relative quantity; 0.1 is the same
-amount of CPU on a single-core, dual-core, or 48-core machine.
+CPU는 항상 상대 수량이 아닌 절대 수량으로 요청된다. 0.1은 단일 코어, 듀얼 코어 또는
+48 코어 시스템의 CPU양과 동일하다.
 
-Delete your Pod:
+파드 삭제하기:
 
 ```shell
 kubectl delete pod cpu-demo --namespace=cpu-example
