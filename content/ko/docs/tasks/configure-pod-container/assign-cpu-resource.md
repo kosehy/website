@@ -151,10 +151,10 @@ kubectl delete pod cpu-demo --namespace=cpu-example
 
 ## 노드에 비해 너무 큰 CPU 요청 지정
 
-CPU requests and limits are associated with Containers, but it is useful to think
-of a Pod as having a CPU request and limit. The CPU request for a Pod is the sum
-of the CPU requests for all the Containers in the Pod. Likewise, the CPU limit for
-a Pod is the sum of the CPU limits for all the Containers in the Pod.
+CPU 요청 및 제한은 컨테이너와 관련되어 있지만, 파드에 CPU 요청 및 제한이
+있다고 생각하면 유용하다. 파드에 대한 CPU 요청은 파드에 있는 모든 컨테이너에
+대한 CPU 요청의 합계이다. 마찬가지로 파드의 CPU 한도는 파드의 모든 컨테이너에
+대한 CPU 한도의 합계이다.
 
 Pod scheduling is based on requests. A Pod is scheduled to run on a Node only if
 the Node has enough CPU resources available to satisfy the Pod CPU request.
