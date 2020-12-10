@@ -156,8 +156,8 @@ CPU 요청 및 제한은 컨테이너와 관련되어 있지만, 파드에 CPU �
 대한 CPU 요청의 합계이다. 마찬가지로 파드의 CPU 한도는 파드의 모든 컨테이너에
 대한 CPU 한도의 합계이다.
 
-Pod scheduling is based on requests. A Pod is scheduled to run on a Node only if
-the Node has enough CPU resources available to satisfy the Pod CPU request.
+파드 스케줄링은 요청을 기반으로 한다. 파드는 노드에 파드 CPU 요청을
+충족 할 수 있는 충분한 CPU 리소스가 있는 경우에만 노드에서 실행되도록 예약된다.
 
 In this exercise, you create a Pod that has a CPU request so big that it exceeds
 the capacity of any Node in your cluster. Here is the configuration file for a Pod
