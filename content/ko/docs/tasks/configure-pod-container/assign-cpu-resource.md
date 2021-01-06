@@ -159,10 +159,10 @@ CPU 요청 및 제한은 컨테이너와 관련되어 있지만, 파드에 CPU �
 파드 스케줄링은 요청을 기반으로 한다. 파드는 노드에 파드 CPU 요청을
 충족 할 수 있는 충분한 CPU 리소스가 있는 경우에만 노드에서 실행되도록 예약된다.
 
-In this exercise, you create a Pod that has a CPU request so big that it exceeds
-the capacity of any Node in your cluster. Here is the configuration file for a Pod
-that has one Container. The Container requests 100 CPU, which is likely to exceed the
-capacity of any Node in your cluster.
+이 연습에서는 클러스터에 있는 모든 노드의 용량을 초과할 정도로 큰 CPU
+요청을 가진 파드를 만든다. 컨테이너가 하나 있는 파드의 구성 파일은
+다음과 같다. 컨테이너는 100개의 CPU를 요청하는데, 이는 클러스터의 노드
+용량을 초과 할 가능성이 높다.
 
 {{< codenew file="pods/resource/cpu-request-limit-2.yaml" >}}
 
